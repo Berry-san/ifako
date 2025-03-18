@@ -1,0 +1,9 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-yellow: #fffb2e;
+  --color-green: #078503;
+  --color-background: #f3f3f3;
+
+  --font-afacad: 'Afacad', 'sans-serif';
+}
