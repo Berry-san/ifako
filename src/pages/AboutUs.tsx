@@ -1,11 +1,17 @@
 import princeHamzat from '/assets/images/prince_hamzat.png'
+import hero from '/assets/images/hero.png'
 
 const AboutUs = () => {
   return (
     <div className="text-lg">
       {/* image */}
       <section>
-        <div className="bg-red-400 h-56 w-full"></div>
+        {/* <div className="bg-red-400 h-56 w-full"></div> */}
+        <img
+          src={hero}
+          alt="Slide 1"
+          className="w-full h-76 object-cover rounded-lg"
+        />
       </section>
       {/* Brief History */}
       <section className="flex flex-col mt-10">

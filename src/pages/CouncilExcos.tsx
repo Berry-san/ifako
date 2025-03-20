@@ -3,7 +3,13 @@ import { useFetchData } from '@/hooks/useApiHooks'
 import { Member } from './LegislativeArm'
 
 const CouncilExcos: React.FC = () => {
-  const { data } = useFetchData('members?office=council')
+  const { data, isLoading } = useFetchData('members?office=council')
+
+  const members = data ? data : []
+
+  if (isLoading) {
+    return <p>Loading...</p>
+  }
 
   return (
     <>
@@ -11,7 +17,7 @@ const CouncilExcos: React.FC = () => {
         Council Executives
       </h2>
       <div className="container mx-auto px-4 py-8 grid gap-6 grid-cols-12">
-        {data.slice(0, 2).map((member: Member) => (
+        {members?.slice(0, 2).map((member: Member) => (
           <div key={member.id} className="col-span-12 md:col-span-6 rounded-lg">
             <img
               src={member.imageUrl}
@@ -27,7 +33,7 @@ const CouncilExcos: React.FC = () => {
 
         {/* Medium members (3rd, 4th, 5th) should be in one row */}
         {/* <div className=""> */}
-        {data.slice(2, 5).map((member: Member) => (
+        {members?.slice(2, 5).map((member: Member) => (
           <div key={member.id} className="col-span-12 md:col-span-4 rounded-lg">
             <img
               src={member.imageUrl}
@@ -45,7 +51,8 @@ const CouncilExcos: React.FC = () => {
         {/* </div> */}
 
         {/* Remaining members - standard layout */}
-        {data.slice(5).map((member: Member) => (
+        {members
+        ?.slice(5).map((member: Member) => (
           <div
             key={member.id}
             className="col-span-12 sm:col-span-6 md:col-span-3 rounded-lg"

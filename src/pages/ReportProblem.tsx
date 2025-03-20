@@ -93,7 +93,7 @@ const ReportProblem = () => {
               e.preventDefault()
               setIsVisible(true)
             }}
-            className="w-full px-4 py-2 font-bold text-white transition-all duration-300 rounded-lg bg-dark-green hover:bg-green-700"
+            className="w-full px-4 py-2 font-bold text-white transition-all duration-300 rounded-lg bg-green "
           >
             Submit
           </button>
@@ -108,7 +108,7 @@ const ReportProblem = () => {
           <p className="my-5">Your Report has been duly noted.</p>
           <Link
             to="/"
-            className="px-4 py-2 font-bold text-white rounded-lg bg-dark-green hover:bg-green-700"
+            className="px-4 py-2 font-bold text-white rounded-lg bg-green"
           >
             Back to Home
           </Link>

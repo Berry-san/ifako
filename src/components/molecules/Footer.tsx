@@ -1,6 +1,7 @@
 import locationICon from '/assets/icons/locationIcon.svg'
 import linkIcon from '/assets/icons/linkIcon.svg'
 import ifakoLogo from '/assets/images/ifako-ijaiye-logo.png'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
@@ -22,22 +23,22 @@ const Footer = () => {
               <img src={linkIcon} alt="link icon" />
               <p className="ml-2 text-lg">Quick links:</p>
             </div>
-            <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-10 mt-2 justi">
-              <a href="#" className="text-white">
-                About
-              </a>
-              <a href="#" className="text-white">
+            <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-10 mt-2 text-gray-500">
+              <Link to="/" className="">
+                Home
+              </Link>
+              <Link to="/about-us/council-excos" className="">
                 Govt executives
-              </a>
-              <a href="#" className="text-white">
+              </Link>
+              <Link to="/news" className="">
                 News
-              </a>
-              <a href="#" className="text-white">
+              </Link>
+              <Link to="/" className="">
                 Jobs
-              </a>
-              <a href="#" className="text-white">
+              </Link>
+              <Link to="/contact-us" className="">
                 Contact Us
-              </a>
+              </Link>
             </div>
           </div>
           <div className="flex flex-col">
@@ -45,14 +46,14 @@ const Footer = () => {
               <img src={linkIcon} alt="link icon" />
               <p className="ml-2 text-lg">Social media:</p>
             </div>
-            <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-10 mt-2">
-              <a href="#" className="text-white">
+            <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-10 mt-2 text-gray-500">
+              <a href="#" className="">
                 Facebook
               </a>
-              <a href="#" className="text-white">
+              <a href="#" className="">
                 Instagram
               </a>
-              <a href="#" className="text-white">
+              <a href="#" className="">
                 LinkedIn
               </a>
             </div>
@@ -62,8 +63,8 @@ const Footer = () => {
               <img src={linkIcon} alt="link icon" />
               <p className="ml-2 text-lg">Contact:</p>
             </div>
-            <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 mt-2">
-              <p className="text-white">08012345678, 07021234568</p>
+            <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 mt-2 text-gray-500">
+              <p className="">08012345678, 07021234568</p>
             </div>
           </div>
         </div>

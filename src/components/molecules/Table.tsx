@@ -8,15 +8,15 @@ interface TableProps {
 
 const Table: React.FC<TableProps> = ({ title, columns, data }) => {
   return (
-    <div className="w-full">
+    <div className="w-full text-center">
       <h2 className="text-xl mb-4">{title}</h2>
-      <div className="overflow-x-auto rounded-xl">
-        <table className="min-w-full rounded-xl border-gray-300">
+      <div className="w-full overflow-x-auto rounded-xl">
+        <table className="w-full rounded-xl border-gray-300">
           {/* Table Head */}
           <thead className="bg-[#C4C4C4]/32">
             <tr>
               {columns.map((col, index) => (
-                <th key={index} className="py-2 px-4 text-left font-medium">
+                <th key={index} className="py-4 px-4 text-left font-medium">
                   {col}
                 </th>
               ))}
@@ -28,7 +28,7 @@ const Table: React.FC<TableProps> = ({ title, columns, data }) => {
             {data.map((row, rowIndex) => (
               <tr key={rowIndex} className="border-b hover:bg-#C4C4C41A">
                 {Object.values(row).map((value, colIndex) => (
-                  <td key={colIndex} className="py-2 px-4 text-left">
+                  <td key={colIndex} className="py-4 px-4 text-left">
                     {value}
                   </td>
                 ))}

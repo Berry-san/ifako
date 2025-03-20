@@ -80,7 +80,7 @@ const EmergencyServices: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="w-full py-20 mx-auto space-y-20 text-center max-w-screen-2xl px-5 lg:px-20">
       <Table
         title={fireStations.title}
         columns={fireStations.columns}

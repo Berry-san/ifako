@@ -70,9 +70,9 @@ const Header = () => {
     }))
   }
 
-  const toggleDesktopSubMenu = (menu: string) => {
-    setDesktopActiveSubMenu((prev) => (prev === menu ? null : menu))
-  }
+  // const toggleDesktopSubMenu = (menu: string) => {
+  //   setDesktopActiveSubMenu((prev) => (prev === menu ? null : menu))
+  // }
 
   const DesktopMenu = () => (
     <div className="items-center hidden space-x-8 lg:flex">
@@ -84,7 +84,8 @@ const Header = () => {
       <div
         ref={aboutUsRef}
         className="relative flex items-center cursor-pointer"
-        onClick={() => toggleDesktopSubMenu('about-us')}
+        onMouseEnter={() => setDesktopActiveSubMenu('about-us')}
+        onMouseLeave={() => setDesktopActiveSubMenu(null)}
       >
         <span className={linkClasses('/about-us')}>About Us</span>
         <img
@@ -153,7 +154,9 @@ const Header = () => {
       <div
         ref={resourcesRef}
         className="relative flex items-center cursor-pointer"
-        onClick={() => toggleDesktopSubMenu('resources')}
+        // onClick={() => toggleDesktopSubMenu('resources')}
+        onMouseEnter={() => setDesktopActiveSubMenu('resources')}
+        onMouseLeave={() => setDesktopActiveSubMenu(null)}
       >
         <span className={linkClasses('/resources')}>Resources</span>
         <img
@@ -271,7 +274,7 @@ const Header = () => {
               /> */}
             </div>
             {mobileMenuState.activeSubMenu === 'about-us' && (
-              <div className="ml-4 mt-2 space-y-2 divide-y text-base divide-gray-200 border-b">
+              <div className="ml-4 mt-2 space-y-2 divide-y text-base divide-gray-200 border-b border-gray-200">
                 <Link
                   to="/about-us/corporate-overview"
                   className="block"
@@ -342,9 +345,9 @@ const Header = () => {
               /> */}
             </div>
             {mobileMenuState.activeSubMenu === 'resources' && (
-              <div className="ml-4 space-y-2">
+              <div className="ml-4 mt-2 space-y-2 divide-y text-base divide-gray-200 border-b border-gray-200">
                 <Link
-                  to="/resources//resources/heeds-agenda"
+                  to="/resources/heeds-agenda"
                   className="block"
                   onClick={closeMobileMenu}
                 >
@@ -382,7 +385,7 @@ const Header = () => {
             Report a problem
           </Link>
           <Link
-            to="/gallery"
+            to="/contact-us"
             className="block font-medium"
             onClick={closeMobileMenu}
           >
@@ -394,7 +397,7 @@ const Header = () => {
   )
 
   return (
-    <>
+    <div className="w-full">
       <div className="text-lg border-t-4 border-yellow bg-green text-yellow w-full">
         <div className="mx-auto px-4 sm:px-6 lg:px-10 py-2 flex flex-col md:flex-row items-center justify-between">
           <p className="">Office Hours: Mon - Fri 8am - 6pm</p>
@@ -448,7 +451,7 @@ const Header = () => {
 
         <MobileMenu />
       </div>
-    </>
+    </div>
   )
 }
 

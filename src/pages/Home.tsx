@@ -7,6 +7,11 @@ import {
 } from '@/components/ui/carousel'
 
 import princeHamzat from '/assets/images/prince_hamzat.png'
+import hero from '/assets/images/hero.png'
+import { useFetchData } from '@/hooks/useApiHooks'
+import { SkeletonCard } from '@/components/atoms/SkeletonCard'
+import { NewsDetail } from './NewDetails'
+import { useNavigate } from 'react-router-dom'
 
 const cardsData = [
   {
@@ -35,40 +40,44 @@ const cardsData = [
   },
 ]
 
-const newsData = [
-  {
-    id: 1,
-    date: '16th Jan, 2025',
-    title:
-      'IFAKO-IJAIYE LG BEGINS 2025 FREE UTME FORMS DISTRIBUTION AND 3-MONTH TRAINING',
-    // image: 'https://via.placeholder.com/300', // Replace with actual image
-    content: 'Full news content for article 1...',
-  },
-  {
-    id: 2,
-    date: '16th Jan, 2025',
-    title: 'BEING A SPEECH DELIVERED BY THE EXECUTIVE CHAIRMAN OF IFAKO-IJAIYE',
-    // image: 'https://via.placeholder.com/300',
-    content: 'Full news content for article 2...',
-  },
-  {
-    id: 3,
-    date: '16th Jan, 2025',
-    title:
-      'IFAKO-IJAIYE SUSTAINS CONTINUOUS SUPPORT PROGRAM FOR WIDOWS AND MORE',
-    // image: 'https://via.placeholder.com/300',
-    content: 'Full news content for article 3...',
-  },
-  {
-    id: 4,
-    date: '16th Jan, 2025',
-    title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
-    // image: 'https://via.placeholder.com/300',
-    content: 'Full news content for article 4...',
-  },
-]
+// const newsData = [
+//   {
+//     id: 1,
+//     date: '16th Jan, 2025',
+//     title:
+//       'IFAKO-IJAIYE LG BEGINS 2025 FREE UTME FORMS DISTRIBUTION AND 3-MONTH TRAINING',
+//     // image: 'https://via.placeholder.com/300', // Replace with actual image
+//     content: 'Full news content for article 1...',
+//   },
+//   {
+//     id: 2,
+//     date: '16th Jan, 2025',
+//     title: 'BEING A SPEECH DELIVERED BY THE EXECUTIVE CHAIRMAN OF IFAKO-IJAIYE',
+//     // image: 'https://via.placeholder.com/300',
+//     content: 'Full news content for article 2...',
+//   },
+//   {
+//     id: 3,
+//     date: '16th Jan, 2025',
+//     title:
+//       'IFAKO-IJAIYE SUSTAINS CONTINUOUS SUPPORT PROGRAM FOR WIDOWS AND MORE',
+//     // image: 'https://via.placeholder.com/300',
+//     content: 'Full news content for article 3...',
+//   },
+//   {
+//     id: 4,
+//     date: '16th Jan, 2025',
+//     title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
+//     // image: 'https://via.placeholder.com/300',
+//     content: 'Full news content for article 4...',
+//   },
+// ]
 
 const Home = () => {
+  const navigate = useNavigate()
+
+  const { data: newsData, isLoading } = useFetchData('news')
+
   return (
     <div className="text-black relative p-6 space-y-10">
       <section className="">
@@ -77,25 +86,40 @@ const Home = () => {
         <Carousel>
           <CarouselContent>
             <CarouselItem>
-              <div
+              {/* <div
                 // src="https://via.placeholder.com/800x400?text=Slide+1"
                 // alt="Slide 1"
                 className="w-full h-76 object-cover rounded-lg bg-red-400"
-              ></div>
+              ></div> */}
+              <img
+                src={hero}
+                alt="Slide 1"
+                className="w-full h-76 object-cover rounded-lg"
+              />
             </CarouselItem>
             <CarouselItem>
-              <div
+              {/* <div
                 // src="https://via.placeholder.com/800x400?text=Slide+1"
                 // alt="Slide 1"
-                className="w-full h-64 object-cover rounded-lg bg-blue-400"
-              ></div>
+                className="w-full h-76 object-cover rounded-lg bg-blue-400"
+              ></div> */}
+              <img
+                src={hero}
+                alt="Slide 1"
+                className="w-full h-76 object-cover rounded-lg"
+              />
             </CarouselItem>
             <CarouselItem>
-              <div
+              {/* <div
                 // src="https://via.placeholder.com/800x400?text=Slide+1"
                 // alt="Slide 1"
-                className="w-full h-64 object-cover rounded-lg bg-green-400"
-              ></div>
+                className="w-full h-76 object-cover rounded-lg bg-green-400"
+              ></div> */}
+              <img
+                src={hero}
+                alt="Slide 1"
+                className="w-full h-76 object-cover rounded-lg"
+              />
             </CarouselItem>
           </CarouselContent>
           <CarouselPrevious />
@@ -153,33 +177,49 @@ const Home = () => {
 
       {/* News */}
       <section className="container mx-auto py-8">
-        <h2 className="text-center text-2xl font-medium mb-6">
-          Stay Informed With The Latest Updates
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {newsData.map((news) => (
-            <div
-              key={news.id}
-              className="overflow-hidden cursor-pointer h-full flex flex-col"
-            >
-              {/* Image Placeholder */}
-              <div className="w-full h-48 bg-gray-200"></div>
+        {isLoading ? (
+          <SkeletonCard />
+        ) : (
+          <>
+            <h2 className="text-center text-2xl font-medium mb-6">
+              Stay Informed With The Latest Updates
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {newsData?.map((news: NewsDetail) => (
+                <div
+                  key={news.id}
+                  className="overflow-hidden cursor-pointer h-full flex flex-col"
+                  onClick={() => navigate(`/news/${news.id}`)}
+                >
+                  {/* Image Placeholder */}
+                  {/* <div className="w-full h-48 bg-gray-200"></div>
+                   */}
 
-              {/* Content Wrapper (flex-grow to push "Read more" to the bottom) */}
-              <div className="p-4 flex flex-col flex-grow">
-                <div className="flex-grow">
-                  {' '}
-                  {/* 🔹 Allows content to take space and push "Read more" down */}
-                  <p className="text-sm text-gray-500">{news.date}</p>
-                  <h3 className="font-semibold text-lg mt-2">{news.title}</h3>
+                  <img
+                    src={news.imageUrl}
+                    alt={news.header}
+                    className="w-full h-48 object-cover"
+                  />
+
+                  {/* Content Wrapper (flex-grow to push "Read more" to the bottom) */}
+                  <div className="p-4 flex flex-col flex-grow">
+                    <div className="flex-grow">
+                      {' '}
+                      {/* 🔹 Allows content to take space and push "Read more" down */}
+                      <p className="text-sm text-gray-500">{news.date}</p>
+                      <h3 className="font-semibold text-lg mt-2 truncate">
+                        {news.header}
+                      </h3>
+                    </div>
+
+                    {/* Read More (Always at the bottom) */}
+                    <p className="text-green-600 mt-4">Read more...</p>
+                  </div>
                 </div>
-
-                {/* Read More (Always at the bottom) */}
-                <p className="text-green-600 mt-4">Read more...</p>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </>
+        )}
       </section>
     </div>
   )

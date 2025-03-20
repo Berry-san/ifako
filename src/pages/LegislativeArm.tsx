@@ -17,7 +17,7 @@ const LegislativeArm = () => {
     <>
       <h2 className="text-center text-4xl mb-6 font-bold">Legislative Arm</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {data.map((member: Member, index: number) => {
+        {data?.map((member: Member, index: number) => {
           const isFirst = index === 0 // First staff member gets a unique style
           return (
             <div
