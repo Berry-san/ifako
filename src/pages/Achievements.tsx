@@ -1,7 +1,11 @@
 import { useFetchData } from '@/hooks/useApiHooks'
 
 const Achievements = () => {
-  const { data: achievements } = useFetchData('images/achievements')
+  const { data: achievements, error } = useFetchData('main/images/achievements')
+
+  if (error) {
+    return
+  }
   return (
     <div>
       <h1>Achievements</h1>

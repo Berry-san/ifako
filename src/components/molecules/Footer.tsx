@@ -9,12 +9,14 @@ const Footer = () => {
       <div className="bg-black text-white px-10 py-10 w-full font-medium">
         <img src={ifakoLogo} alt="ifako logo" className="w-20 h-20" />
         <p className="mt-2 text-lg">
-          Official website, <span>Ifako Local Government</span>
+          Official website, <span>Ifako-Ijaiye Local Government</span>
         </p>
         <div className="flex items-center mt-2">
           <img src={locationICon} alt="location icon" />
           <p className="ml-2">
-            <span>Ifako-Ijaiye. Lagos State, Nigeria</span>
+            <span>
+              61, College Road, Idiagbon Opposite African Church, ifako, Ogba.
+            </span>
           </p>
         </div>
         <div className="mt-10 flex flex-col lg:flex-row lg:space-x-20 lg:items-center space-y-2 lg:space-y-0">
@@ -28,7 +30,7 @@ const Footer = () => {
                 Home
               </Link>
               <Link to="/about-us/council-excos" className="">
-                Govt executives
+                Govt Executives
               </Link>
               <Link to="/news" className="">
                 News
@@ -47,7 +49,11 @@ const Footer = () => {
               <p className="ml-2 text-lg">Social media:</p>
             </div>
             <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-10 mt-2 text-gray-500">
-              <a href="#" className="">
+              <a
+                href="https://www.facebook.com/ifakoijaiye"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Facebook
               </a>
               <a href="#" className="">

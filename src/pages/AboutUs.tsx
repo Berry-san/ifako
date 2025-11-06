@@ -1,5 +1,7 @@
-import princeHamzat from '/assets/images/prince_hamzat.png'
-import hero from '/assets/images/hero.png'
+// import princeHamzat from '/assets/images/prince_hamzat.png'
+import princeHamzat from '/assets/images/corporate_overview.jpg'
+// import aboutImage from '/assets/images/about_image1.jpeg'
+import ifakoMap from '/assets/images/ifakoMap.jpeg'
 
 const AboutUs = () => {
   return (
@@ -8,9 +10,9 @@ const AboutUs = () => {
       <section>
         {/* <div className="bg-red-400 h-56 w-full"></div> */}
         <img
-          src={hero}
+          src={ifakoMap}
           alt="Slide 1"
-          className="w-full h-76 object-cover rounded-lg"
+          className="w-full h-96 object-cover"
         />
       </section>
       {/* Brief History */}
@@ -51,8 +53,8 @@ const AboutUs = () => {
         </p>
       </section>
       {/* Chairman */}
-      <section className="flex flex-col xl:flex-row gap-4 xl:gap-10 mt-10">
-        <div className="flex flex-col w-full xl:w-2/3 order-2 xl:order-1">
+      <section className="flex flex-col md:flex-row gap-4 md:gap-10 mt-10">
+        <div className="flex flex-col w-full md:w-2/3 order-2 md:order-1">
           <h2 className="text-2xl font-medium">Meet the Chairman</h2>
           <p className="mt-2">
             Prince Usman Akanbi Hamzat is an icon of community activism,
@@ -71,13 +73,9 @@ const AboutUs = () => {
             are both unprecedented and mind-blowing.
           </p>
         </div>
-        <div className="order-1 xl:order-2 xl:w-1/3">
+        <div className="order-1 md:order-2 md:w-1/3">
           {/* <div className="w-full h-48 xl:h-full bg-amber-700"></div> */}
-          <img
-            src={princeHamzat}
-            alt="Prince Hamzat"
-            className="w-full h-96 xl:h-full"
-          />
+          <img src={princeHamzat} alt="Prince Hamzat" className="w-full h-76" />
         </div>
       </section>
     </div>

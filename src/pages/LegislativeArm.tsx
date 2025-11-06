@@ -9,13 +9,17 @@ export interface Member {
 }
 
 const LegislativeArm = () => {
-  const { data, isLoading } = useFetchData('members?office=Legislative')
-  console.log(data)
+  const { data, isLoading, isError, error } = useFetchData(
+    'main/members?office=Legislative'
+  )
   if (isLoading) return <Skeleton className="w-[100px] h-[20px] rounded-full" />
 
   return (
     <>
       <h2 className="text-center text-4xl mb-6 font-bold">Legislative Arm</h2>
+      {isError && (
+        <p className="mb-3 text-sm text-red-600">{(error as Error).message}</p>
+      )}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {data?.map((member: Member, index: number) => {
           const isFirst = index === 0 // First staff member gets a unique style

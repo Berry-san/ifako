@@ -1,14 +1,12 @@
 // src/services/apiService.ts
 import axios from 'axios'
 
-const BASE_URL = 'https://ifako.onrender.com/api/main/'
-const API_KEY = 'your_api_key_here' // Replace with actual API key
+const BASE_URL = 'https://ifako.onrender.com/api/'
 
 const apiClient = axios.create({
   baseURL: BASE_URL,
   headers: {
     'Content-Type': 'application/json',
-    'x-api-key': API_KEY,
   },
 })
 
@@ -32,15 +30,14 @@ const handleRequest = async (request: Promise<any>) => {
   }
 }
 
-// API service with all CRUD functions
 export const apiService = {
-  get: (endpoint: string) => handleRequest(apiClient.get(endpoint)), // Fetch all
+  get: (endpoint: string) => handleRequest(apiClient.get(endpoint)),
   getById: (endpoint: string, id: string) =>
-    handleRequest(apiClient.get(`${endpoint}/${id}`)), // Fetch by ID
+    handleRequest(apiClient.get(`${endpoint}/${id}`)),
   post: (endpoint: string, body: object) =>
-    handleRequest(apiClient.post(endpoint, body)), // Create
+    handleRequest(apiClient.post(endpoint, body)),
   update: (endpoint: string, id: string, body: object) =>
-    handleRequest(apiClient.post(`${endpoint}/${id}`, body)), // Update
+    handleRequest(apiClient.post(`${endpoint}/${id}`, body)),
   delete: (endpoint: string, id: string) =>
-    handleRequest(apiClient.delete(`${endpoint}/${id}`)), // Delete
+    handleRequest(apiClient.delete(`${endpoint}/${id}`)),
 }

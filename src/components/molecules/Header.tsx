@@ -418,7 +418,9 @@ const Header = () => {
               <div className="flex items-center">
                 <p className="text-gray-500 text-lg font-medium">
                   Official website,{' '}
-                  <span className="text-black">Ifako Local Government</span>
+                  <span className="text-black">
+                    Ifako-Ijaiye Local Government
+                  </span>
                 </p>
               </div>
               <div className="hidden xl:block">

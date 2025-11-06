@@ -7,3 +7,10 @@
 
   --font-afacad: 'Afacad', 'sans-serif';
 }
+
+pre {
+  font-family: Arial, sans-serif;
+
+  white-space: pre-wrap; /* Ensures text wraps within the container */
+  word-break: break-word; /* Prevents long words from overflowing */
+}

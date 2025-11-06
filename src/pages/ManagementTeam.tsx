@@ -2,10 +2,14 @@ import { useFetchData } from '@/hooks/useApiHooks'
 import { Member } from './LegislativeArm'
 
 const ManagementTeam = () => {
-  const { data } = useFetchData('members?office=management')
-  console.log(data)
+  const { data, isError, error } = useFetchData(
+    'main/members?office=management'
+  )
   return (
     <>
+      {isError && (
+        <p className="mb-3 text-sm text-red-600">{(error as Error).message}</p>
+      )}
       <div className="grid">
         <div className="grid grid-cols-12 gap-5">
           <div className="md:col-span-5 order-1 md:order-0 hidden sm:block">

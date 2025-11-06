@@ -6,8 +6,11 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel'
 
-import princeHamzat from '/assets/images/prince_hamzat.png'
-import hero from '/assets/images/hero.png'
+import princeHamzat from '/assets/images/chairman_homepage.jpg'
+// import hero from '/assets/images/hero.png'
+import hero2 from '/assets/images/hero2.jpeg'
+import hero3 from '/assets/images/slide_pics.jpg'
+import hero4 from '/assets/images/slide_pics2.jpg'
 import { useFetchData } from '@/hooks/useApiHooks'
 import { SkeletonCard } from '@/components/atoms/SkeletonCard'
 import { NewsDetail } from './NewDetails'
@@ -40,85 +43,75 @@ const cardsData = [
   },
 ]
 
-// const newsData = [
-//   {
-//     id: 1,
-//     date: '16th Jan, 2025',
-//     title:
-//       'IFAKO-IJAIYE LG BEGINS 2025 FREE UTME FORMS DISTRIBUTION AND 3-MONTH TRAINING',
-//     // image: 'https://via.placeholder.com/300', // Replace with actual image
-//     content: 'Full news content for article 1...',
-//   },
-//   {
-//     id: 2,
-//     date: '16th Jan, 2025',
-//     title: 'BEING A SPEECH DELIVERED BY THE EXECUTIVE CHAIRMAN OF IFAKO-IJAIYE',
-//     // image: 'https://via.placeholder.com/300',
-//     content: 'Full news content for article 2...',
-//   },
-//   {
-//     id: 3,
-//     date: '16th Jan, 2025',
-//     title:
-//       'IFAKO-IJAIYE SUSTAINS CONTINUOUS SUPPORT PROGRAM FOR WIDOWS AND MORE',
-//     // image: 'https://via.placeholder.com/300',
-//     content: 'Full news content for article 3...',
-//   },
-//   {
-//     id: 4,
-//     date: '16th Jan, 2025',
-//     title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
-//     // image: 'https://via.placeholder.com/300',
-//     content: 'Full news content for article 4...',
-//   },
-// ]
-
 const Home = () => {
   const navigate = useNavigate()
 
-  const { data: newsData, isLoading } = useFetchData('news')
+  const {
+    data: newsData,
+    isLoading,
+    isError,
+    error,
+  } = useFetchData('main/news')
+
+  const topNews = newsData?.slice(0, 3)
 
   return (
     <div className="text-black relative p-6 space-y-10">
       <section className="">
         {/* {' relative max-w-[90%] mx-auto'} */}
         {/* Adjust width to keep arrows at edges */}
-        <Carousel>
+        <Carousel className="text-white">
           <CarouselContent>
             <CarouselItem>
+              <img
+                src={hero2}
+                alt="Slide 1"
+                className="w-full h-88 object-cover"
+              />
               {/* <div
                 // src="https://via.placeholder.com/800x400?text=Slide+1"
                 // alt="Slide 1"
-                className="w-full h-76 object-cover rounded-lg bg-red-400"
-              ></div> */}
+                className="w-full bg-[url('/assets/images/hero2.jpeg')] h-88 bg-cover bg-green-400 px-10 pb-10 flex flex-col justify-end"
+              >
+                <h2 className="text-2xl font-semibold">
+                  What You Should Know About Our Local Government.
+                </h2>
+                <p className="">
+                  Welcome to Ifako-Ijaiye local government. The award-winning
+                  local government in Lagos State. Proudly supported by Prince
+                  Usman Akanbi Hamzat - Executive Chairman, Ifako-Ijaiye Local
+                  Government.
+                </p>
+              </div> */}
+            </CarouselItem>
+            <CarouselItem>
               <img
-                src={hero}
+                src={hero3}
                 alt="Slide 1"
-                className="w-full h-76 object-cover rounded-lg"
+                className="w-full h-88 object-cover"
               />
             </CarouselItem>
             <CarouselItem>
               {/* <div
                 // src="https://via.placeholder.com/800x400?text=Slide+1"
                 // alt="Slide 1"
-                className="w-full h-76 object-cover rounded-lg bg-blue-400"
-              ></div> */}
+
+                className="w-full bg-[url('/assets/images/hero.png')] h-88 bg-cover bg-green-400 px-10 pb-10 flex flex-col justify-end"
+              >
+                <h2 className="text-2xl font-semibold">
+                  What You Should Know About Our Local Government.
+                </h2>
+                <p className="">
+                  Welcome to Ifako-Ijaiye local government. The award-winning
+                  local government in Lagos State. Proudly supported by Prince
+                  Usman Akanbi Hamzat - Executive Chairman, Ifako-Ijaiye Local
+                  Government.
+                </p>
+              </div> */}
               <img
-                src={hero}
+                src={hero4}
                 alt="Slide 1"
-                className="w-full h-76 object-cover rounded-lg"
-              />
-            </CarouselItem>
-            <CarouselItem>
-              {/* <div
-                // src="https://via.placeholder.com/800x400?text=Slide+1"
-                // alt="Slide 1"
-                className="w-full h-76 object-cover rounded-lg bg-green-400"
-              ></div> */}
-              <img
-                src={hero}
-                alt="Slide 1"
-                className="w-full h-76 object-cover rounded-lg"
+                className="w-full h-88 object-cover"
               />
             </CarouselItem>
           </CarouselContent>
@@ -148,7 +141,6 @@ const Home = () => {
           </p>
         </div>
         <div className="order-1 xl:order-2 xl:w-1/3">
-          {/* <div className="w-full h-48 xl:h-full bg-amber-700"></div> */}
           <img
             src={princeHamzat}
             alt="Prince Hamzat"
@@ -184,17 +176,18 @@ const Home = () => {
             <h2 className="text-center text-2xl font-medium mb-6">
               Stay Informed With The Latest Updates
             </h2>
+            {isError && (
+              <p className="mb-3 text-sm text-red-600">
+                {(error as Error).message}
+              </p>
+            )}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {newsData?.map((news: NewsDetail) => (
+              {topNews?.map((news: NewsDetail) => (
                 <div
                   key={news.id}
                   className="overflow-hidden cursor-pointer h-full flex flex-col"
                   onClick={() => navigate(`/news/${news.id}`)}
                 >
-                  {/* Image Placeholder */}
-                  {/* <div className="w-full h-48 bg-gray-200"></div>
-                   */}
-
                   <img
                     src={news.imageUrl}
                     alt={news.header}

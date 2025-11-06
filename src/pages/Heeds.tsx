@@ -1,24 +1,24 @@
 import { useFetchData } from '@/hooks/useApiHooks'
-import { useEffect } from 'react'
 
 const Heeds = () => {
-  const { data: heeds, isLoading } = useFetchData('images/agenda')
+  const {
+    data: heeds,
+    isLoading,
+    isError,
+    error,
+  } = useFetchData('main/images/agenda')
 
-  useEffect(() => {
-    if (heeds) console.log(heeds)
-  }, [heeds])
-
-  console.log(heeds)
-  //   console.log(heeds[0].imageUrls)
-  //   if (!heeds || !heeds.length || !heeds[0].imageUrls) {
-  //     return <p>No images available</p>
-  //   }
   if (isLoading) {
     return <p>Loading...</p>
   }
   return (
     <div>
       <h1>Heeds Agenda</h1>
+      {isError && (
+        <p className="mb-3 text-sm mt-2 text-red-600">
+          {(error as Error).message}
+        </p>
+      )}
       {heeds[0]?.imageUrls?.map((imageUrl: string, index: number) => (
         <img
           key={index} // Always add a key when mapping

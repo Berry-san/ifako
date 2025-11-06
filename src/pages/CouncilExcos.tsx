@@ -3,7 +3,9 @@ import { useFetchData } from '@/hooks/useApiHooks'
 import { Member } from './LegislativeArm'
 
 const CouncilExcos: React.FC = () => {
-  const { data, isLoading } = useFetchData('members?office=council')
+  const { data, isLoading, isError, error } = useFetchData(
+    'main/members?office=council'
+  )
 
   const members = data ? data : []
 
@@ -16,6 +18,9 @@ const CouncilExcos: React.FC = () => {
       <h2 className="text-center text-4xl mb-6 font-bold">
         Council Executives
       </h2>
+      {isError && (
+        <p className="mb-3 text-sm text-red-600">{(error as Error).message}</p>
+      )}
       <div className="container mx-auto px-4 py-8 grid gap-6 grid-cols-12">
         {members?.slice(0, 2).map((member: Member) => (
           <div key={member.id} className="col-span-12 md:col-span-6 rounded-lg">
@@ -51,8 +56,7 @@ const CouncilExcos: React.FC = () => {
         {/* </div> */}
 
         {/* Remaining members - standard layout */}
-        {members
-        ?.slice(5).map((member: Member) => (
+        {members?.slice(5).map((member: Member) => (
           <div
             key={member.id}
             className="col-span-12 sm:col-span-6 md:col-span-3 rounded-lg"
