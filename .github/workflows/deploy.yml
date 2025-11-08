@@ -24,7 +24,7 @@ jobs:
           CI: "false"
           PUBLIC_URL: https://ifakoijaiye.lg.gov.ng
         run: |
-          npm ci
+          npm ci --legacy-peer-deps
           npm run build
 
       - name: Deploy via FTPS to subdomain docroot
