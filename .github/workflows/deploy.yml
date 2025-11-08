@@ -1,0 +1,38 @@
+name: Deploy ifako website via FTPS
+
+on:
+  push:
+    branches: ["main"] # adjust if needed
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      # Inject ENV only into the build step
+      - name: Install & Build (CRA)
+        env:
+          CI: "false"
+          PUBLIC_URL: https://ifakoijaiye.lg.gov.ng
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy via FTPS to subdomain docroot
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: smartcare.com.ng # e.g., smartcare.com.ng
+          username: ${{secrets.CPANEL_USERNAME}}
+          password: ${{secrets.CPANEL_PASSWORD}}
+          protocol: ftps
+          local-dir: dist/ # note trailing slash
+          server-dir: ${{secrets.CPANEL_SERVER}}
