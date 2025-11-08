@@ -2,7 +2,7 @@ name: Deploy ifako website via FTPS
 
 on:
   push:
-    branches: ["main"]
+    branches: ["master"]
 
 jobs:
   build-and-deploy:
